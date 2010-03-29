@@ -57,7 +57,7 @@ $.fn.typeset: ->
     'width': 'auto'
   }
   elem.css {
-    'margin-top': (($(this).height() - (ratios_by_line[best_entry].height * scaling_factor)) / 2) + 'px'
+    'margin-top': (($(this).height() - elem.height()) / 2) + 'px'
   }
 
 
