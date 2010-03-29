@@ -30,11 +30,11 @@ $.fn.typeset: ->
   console.log "done: " + elem.height() + " / " + line_height + " = " + (elem.height() / line_height)
   console.log ratios_by_line
 
-  closest_ratio_to_one: 1
+  closest_ratio_to_one: null
   best_entry: null
   $.each ratios_by_line, (lines, data) ->
     console.log "on " + lines + ": " + data
-    if Math.abs(data.ratio_difference - 1) < closest_ratio_to_one
+    if closest_ratio_to_one == null || Math.abs(data.ratio_difference - 1) < closest_ratio_to_one
       closest_ratio_to_one: Math.abs(data.ratio_difference - 1)
       best_entry: lines
 
