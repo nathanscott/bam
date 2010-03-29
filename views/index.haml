@@ -7,19 +7,19 @@
         %li
           %label
             Message
-          %textarea.message
+          %textarea.message{:name => "message"}
         %li
           %label
             Style
-          %select{ :multiple => "multiple"}
+          %select{ :name => "style", :multiple => "multiple"}
             %option="Basic"
             %option="Magic"
             %option="Heart"
             %option="JPRDY"
         %li.buttons
-          %input{:type => "submit", :value => "Preview", :name => "Preview"}/
+          %input{:type => "submit", :value => "Preview", :name => "Preview", :onclick => "this.form.action='/preview';"}/
           %input{:type => "submit", :value => "Save", :name => "Save", :onclick => "this.form.action='/save';"}/
-          %input{:type => "submit", :value => "?", :name => "Help"}/
+          %input{:type => "submit", :value => "?", :name => "Help", :onclick => "this.form.action='/help';"}/
   %li
     Click to Copy URL
     %input#url
