@@ -56,6 +56,9 @@ $.fn.typeset: ->
     'font-size': (parseInt(elem.css('font-size')) * scaling_factor) + 'px'
     'width': 'auto'
   }
+  elem.css {
+    'margin-top': (($(this).height() - (ratios_by_line[best_entry].height * scaling_factor)) / 2) + 'px'
+  }
 
 
 $.fn.bigarsemessage: (text) ->
