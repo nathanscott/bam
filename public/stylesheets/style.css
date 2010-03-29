@@ -46,7 +46,7 @@ form {
     display: block;
   }
   form textarea.message {
-    width: 350px;
+    width: 7.2em;
     height: 5em;
     text-transform: uppercase;
     overflow: hidden;
