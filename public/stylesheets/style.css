@@ -93,6 +93,10 @@ form {
     border: none;
     cursor: pointer;
   }
+    form input[type="submit"]:hover {
+      color: #00f;
+      background-color: white;
+    }
     form input[type="submit"]:before {
       content: ">>";
     }
