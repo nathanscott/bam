@@ -11,5 +11,3 @@ $ ->
   $('textarea.message').keyup ->
     if $(this).val().length > MessageLength
       $(this).val($(this).val().substring(0,MessageLength))
-
-  # TODO submit buttons need form action changers onclick
