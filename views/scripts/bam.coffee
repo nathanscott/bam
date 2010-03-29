@@ -62,7 +62,7 @@ $.fn.typeset: ->
 
 $.fn.set_styles: (style) ->
   if style == 'basic'
-    $(this).css({'color': '#fff', 'background-color': '#333'})
+    $(this).css({'color': '#fff', 'background-color': '#000'})
   else if style == 'heart'
     $(this).css({'color': '#000', 'background-color': '#fff'})
 
