@@ -21,14 +21,10 @@ html {
 
 #bigarsemessage.basic,
 #bigarsemessage.magic {
-  color: white;
-  background-color: black;
   font-family: 'Futura';
 }
 
 #bigarsemessage.heart {
-  color: black;
-  background-color: white;
   font-family: AmericanTypewriter;
 }
 

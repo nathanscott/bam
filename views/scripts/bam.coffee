@@ -60,6 +60,11 @@ $.fn.typeset: ->
     'margin-top': (($(this).height() - elem.height()) / 2) + 'px'
   }
 
+$.fn.set_styles: (style) ->
+  if style == 'basic'
+    $(this).css({'color': '#fff', 'background-color': '#333'})
+  else if style == 'heart'
+    $(this).css({'color': '#000', 'background-color': '#fff'})
 
 $.fn.bigarsemessage: (text) ->
   text: "Big Arse Message" if text.length == 0
@@ -67,6 +72,7 @@ $.fn.bigarsemessage: (text) ->
   $(this).attr 'class', $('form:first select option:selected').attr('class')
   $(this).show()
   $(this).typeset()
+  $(this).set_styles $(this).attr('class')
   # $(this).css({'opacity': 1})
 
 $ ->
