@@ -1,5 +1,5 @@
 $ ->
   $('form li input[type=submit]').click ->
-    $(this).parents('form:first').attr 'action', '/' + $(this).attr('value')
-    $(this).parents('form:first').submit()
+    $('form:first').attr 'action', '/' + $(this).attr('value')
+    $('form:first').submit()
     false
