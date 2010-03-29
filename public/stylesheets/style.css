@@ -28,15 +28,14 @@ html {
   #bigarsemessage.basic,
   #bigarsemessage.magic {
     font-family: 'Futura';
+    font-style: italic;
   }
 
   #bigarsemessage.heart {
     font-family: AmericanTypewriter;
   }
   #bigarsemessage.jprdy {
-    background: #00c;
     font-family: KorinnaBold;
-    color: #fff;
     text-shadow: 8px 8px 2px #000;
   }
 

@@ -63,6 +63,8 @@ $.fn.set_styles: (style) ->
     $(this).css({'color': '#fff', 'background-color': '#000'})
   else if style == 'heart'
     $(this).css({'color': '#000', 'background-color': '#fff'})
+  else if style == 'jprdy'
+    $(this).css({'color': '#fff', 'background-color': '#00c'})
 
 $.fn.randomizeColour: ->
   randomColor: -> Math.floor Math.random() * 256
