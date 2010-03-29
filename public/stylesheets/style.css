@@ -69,6 +69,9 @@ form {
     border: none;
     cursor: pointer;
   }
+    form input[type="submit"]:before {
+      content: ">>";
+    }
     form input[type="submit"]:last-child {
       margin: 0;
     }

@@ -7,11 +7,11 @@
         %li
           %label
             Message
-          %textarea.message
+          %textarea.message{:name => "message"}
         %li
           %label
             Style
-          %select{ :multiple => "multiple"}
+          %select{ :name => "style", :multiple => "multiple"}
             %option="Basic"
             %option="Magic"
             %option="Heart"
