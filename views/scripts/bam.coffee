@@ -17,7 +17,7 @@ $.fn.typeset: ->
   if !ratios_by_line[lines]
     ratios_by_line[lines]: {'width': elem.width(), 'height': elem.height(), 'container_ratio': container_ratio, 'ratio': (elem.width() / elem.height()), 'ratio_difference': (container_ratio / (elem.width() / elem.height()))}
 
-  console.log elem.height() + " / " + line_height + " = " + (elem.height() / line_height)
+  # console.log elem.height() + " / " + line_height + " = " + (elem.height() / line_height)
 
   width: 0.5
   while elem.height() / line_height > 1
