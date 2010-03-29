@@ -40,6 +40,8 @@ $.fn.typeset: ->
 
   console.log "best: " + closest_ratio_to_one + ", on " + best_entry + " lines"
 
+  elem.css {'width': ratios_by_line[best_entry].width + 'px'}
+
 $.fn.bigarsemessage: (text) ->
   $(this).children('div').html(text)
   $(this).attr 'class', $('form:first select option:selected').attr('class')
