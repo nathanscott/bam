@@ -3,6 +3,12 @@ require 'sinatra'
 require 'haml'
 require 'coffee-script'
 
+class String
+  def blank?
+    nil? || empty?
+  end
+end
+
 get %r{(.*)\.js$} do |basename|
   content_type :js
   CoffeeScript.compile File.read(File.join options.views, "#{basename}.coffee")
@@ -14,8 +20,8 @@ end
 
 helpers do
   def message
-    @style = params['style'].downcase || 'basic'
-    @message = params['message'] || 'Big Arse Message'
+    @style = (params['style'] || 'basic').downcase
+    @message = params['message'].blank? ? 'Big Arse Message' : params['message']
   end
 end
 
