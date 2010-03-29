@@ -1,0 +1,19 @@
+!!!
+%html{:xmlns => "http://www.w3.org/1999/xhtml"}
+  %head
+    %title="Big Arse Message"
+    %meta{"http-equiv" => "content-type", :content => "text/html;charset=utf-8"}
+    %link{:rel => "stylesheet", :href => "http://yui.yahooapis.com/2.8.0r4/build/reset/reset-min.css", :type => "text/css", :media => "screen"}
+    %link{:rel => "stylesheet", :href => "/stylesheets/style.css", :type => "text/css", :media => "screen"}
+    <!--[if lte IE 7]>
+    %link{:rel => "stylesheet", :href => "/ie7.css", :type => "text/css", :media => "screen"}
+    <![endif]-->
+    %link{ :rel => "Shortcut Icon", :href => "/favicon.ico"}
+    %script{:src => "/javascript/cufon-yui.js", :type => "text/javascript"}
+    %script{:src => "/javascript/application.js", :type => "text/javascript"}
+  %body
+    #container
+      #header
+        %h1="Big Arse Message"
+      #content
+        = yield

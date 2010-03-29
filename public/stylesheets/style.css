@@ -1,0 +1,16 @@
+html {
+  background: #8000FF;
+  color: #fff;
+  font-family: "Courier New";
+  font-weight: normal;
+  text-transform: uppercase;
+  font-size: 2.5em;
+}
+
+#header {
+  display: none;
+}
+#container {
+  width: 960px;
+  margin: 2em auto;
+}
