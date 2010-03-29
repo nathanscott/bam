@@ -41,9 +41,15 @@ $.fn.typeset: ->
   console.log "best: " + closest_ratio_to_one + ", on " + best_entry + " lines"
 
   # elem.css {'width': ratios_by_line[best_entry].width + 'px'}
-  scaling_factor: $(this).height() / ratios_by_line[best_entry].height
-  console.log "scaling_factor: " + elem.css('font-size') + " * (" + $(this).height() + "/" + ratios_by_line[best_entry].height + ")"
-  console.log "scaling_factor: " + scaling_factor
+  scaling_factor: if ratios_by_line[best_entry].ratio_difference > 1
+    console.log "height-limited scaling_factor: " + elem.css('font-size') + " * (" + $(this).height() + "/" + ratios_by_line[best_entry].height + ")"
+    console.log "height-limited scaling_factor: " + scaling_factor
+    $(this).height() / ratios_by_line[best_entry].height
+  else
+    console.log "width-limited scaling_factor: " + elem.css('font-size') + " * (" + $(this).height() + "/" + ratios_by_line[best_entry].height + ")"
+    console.log "width-limited scaling_factor: " + scaling_factor
+    $(this).width() / ratios_by_line[best_entry].width
+
   console.log "font-size: " + elem.css('font-size') + " * (" + $(this).height() + "/" + elem.height() + ")"
 
   elem.css {
