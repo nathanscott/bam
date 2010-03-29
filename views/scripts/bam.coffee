@@ -87,7 +87,6 @@ $.fn.bigarsemessage: (text) ->
   $(this).typeset()
   $(this).set_styles $(this).attr('class')
   $(this).attach_events $(this).attr('class')
-  # $(this).css({'opacity': 1})
 
 $ ->
   $('#bigarsemessage').hide().click ->
