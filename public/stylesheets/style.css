@@ -12,19 +12,20 @@ html {
   src: url('/fonts/AmericanTypewriter.ttf');
 }
 
-.bigarsemessage {
+#bigarsemessage {
   text-align: center;
   position: absolute;
+  z-index: 10;
   top: 0; right: 0; bottom: 0; left: 0;
 }
 
-.bigarsemessage.basic,
-.bigarsemessage.magic {
+#bigarsemessage.basic,
+#bigarsemessage.magic {
   color: white;
   background-color: black;
 }
 
-.bigarsemessage.heart {
+#bigarsemessage.heart {
   color: black;
   background-color: white;
   font-family: AmericanTypewriter;

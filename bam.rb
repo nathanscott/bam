@@ -25,11 +25,6 @@ helpers do
   end
 end
 
-post '/preview' do
-  message
-  haml :message
-end
-
 post '/save' do
   # save via ajax and return the url string
   haml :message
