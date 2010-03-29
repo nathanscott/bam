@@ -1,3 +1,5 @@
+MessageLength: 12 * 4
+
 $ ->
   $('form li input[type=submit]').click ->
     $('form:first').attr 'action', '/' + $(this).attr('value')
@@ -6,5 +8,8 @@ $ ->
 
   $('form:first select option.basic').attr('selected', 'selected')
 
-  # TODO textarea.message needs a character limit
+  $('textarea.message').keyup ->
+    if $(this).val().length > MessageLength
+      $(this).val($(this).val().substring(0,MessageLength))
+
   # TODO submit buttons need form action changers onclick
