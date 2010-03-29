@@ -1,5 +1,5 @@
 html {
-  background: #8000FF;
+  background: #5D00FF;
   color: #fff;
   font-family: "Courier New";
   font-weight: normal;
@@ -11,6 +11,64 @@ html {
   display: none;
 }
 #container {
-  width: 960px;
-  margin: 2em auto;
+  width: 800px;
+  margin: 0 auto;
 }
+
+ol#main {
+}
+  ol#main > li {
+    padding: 1em 0;
+    list-style: decimal;
+    list-style-position: inside;
+    border-top: 3px dashed #fff;
+  }
+    ol#main > li:first-child {
+      border-top: none;
+    }
+
+ol.form {
+  overflow: auto;
+}
+  ol.form > li {
+    float: left;
+    padding: 0 .7em;
+    list-style: none;
+  }
+    ol.form > li.buttons {
+      padding: 1em 0 0 5em;
+    }
+form {
+  margin: -1.2em 0 0 2em;
+  display: block;
+}
+  form label {
+    display: block;
+  }
+  form textarea.message {
+    width: 350px;
+    height: 5em;
+    text-transform: uppercase;
+    overflow: hidden;
+  }
+  form select {
+    border: none;
+    background: none;
+    color: #fff;
+    overflow: display;
+  }
+    form select option:selected {
+      background: #fff;
+      color: #000;
+    }
+  form input[type="submit"] {
+    margin: 0 .7em;
+    background: none;
+    color: #fff;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+  }
+    form input[type="submit"]:last-child {
+      margin: 0;
+    }
