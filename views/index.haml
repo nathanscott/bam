@@ -1,13 +1,13 @@
-%ol
+%ol#main
   %li
     Welcome to BigArseMessage.com
   %li
-    %form
+    %form{:method => "get", :action => "/preview"}
       %ol.form
         %li
           %label
             Message
-          %input
+          %textarea.message
         %li
           %label
             Style
@@ -16,10 +16,14 @@
             %option="Magic"
             %option="Heart"
             %option="JPRDY"
-        %li
+        %li.buttons
           %input{:type => "submit", :value => "preview", :name => "Preview"}/
           %input{:type => "submit", :value => "save", :name => "Save"}/
           %input{:type => "submit", :value => "?", :name => "Help"}/
   %li
     Click to Copy URL
     %input#url
+
+:javascript
+  // textarea.message needs a character limit
+  //  submit buttons need form action changers onclick
