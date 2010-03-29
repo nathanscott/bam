@@ -13,11 +13,12 @@ get '/' do
 end
 
 post '/preview' do
-  haml params[:style].to_sym
+  haml :message
 end
 
 post '/save' do
   # save via ajax and return the url string
+  haml :message
 end
 
 get '/help' do
