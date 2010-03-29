@@ -33,8 +33,6 @@ html {
 }
 
 #bigarsemessage div {
-  background-color: #333;
-  width: 5em;
   word-wrap: break-word;
 }
 
