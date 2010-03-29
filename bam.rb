@@ -12,7 +12,15 @@ get '/' do
   haml :index
 end
 
+helpers do
+  def message
+    @style = params['style'].downcase || 'basic'
+    @message = params['message'] || 'Big Arse Message'
+  end
+end
+
 post '/preview' do
+  message
   haml :message
 end
 
