@@ -101,3 +101,7 @@ $ ->
   $('textarea.message').keyup ->
     if $(this).val().length > MessageLength
       $(this).val($(this).val().substring(0,MessageLength))
+  
+  preload: for font in ['/fonts/AmericanTypewriter.ttf', '/fonts/Korinna-Bold.ttf']
+    new_font: new Image()
+    new_font.src: font
