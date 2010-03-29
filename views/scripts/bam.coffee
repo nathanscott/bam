@@ -33,7 +33,6 @@ $.fn.typeset: ->
   closest_ratio_to_one: null
   best_entry: null
   $.each ratios_by_line, (lines, data) ->
-    console.log "on " + lines + ": " + data
     if closest_ratio_to_one == null || Math.abs(data.ratio_difference - 1) < closest_ratio_to_one
       closest_ratio_to_one: Math.abs(data.ratio_difference - 1)
       best_entry: lines
@@ -43,13 +42,12 @@ $.fn.typeset: ->
   # elem.css {'width': ratios_by_line[best_entry].width + 'px'}
   scaling_factor: if ratios_by_line[best_entry].ratio_difference > 1
     console.log "height-limited scaling_factor: " + elem.css('font-size') + " * (" + $(this).height() + "/" + ratios_by_line[best_entry].height + ")"
-    console.log "height-limited scaling_factor: " + scaling_factor
     $(this).height() / ratios_by_line[best_entry].height
   else
     console.log "width-limited scaling_factor: " + elem.css('font-size') + " * (" + $(this).height() + "/" + ratios_by_line[best_entry].height + ")"
-    console.log "width-limited scaling_factor: " + scaling_factor
     $(this).width() / ratios_by_line[best_entry].width
 
+  console.log "scaling_factor: " + scaling_factor
   console.log "font-size: " + elem.css('font-size') + " * (" + $(this).height() + "/" + elem.height() + ")"
 
   elem.css {
