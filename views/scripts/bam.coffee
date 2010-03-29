@@ -62,6 +62,7 @@ $.fn.typeset: ->
 
 
 $.fn.bigarsemessage: (text) ->
+  text: "Big Arse Message" if text.length == 0
   $(this).children('div').html(text)
   $(this).attr 'class', $('form:first select option:selected').attr('class')
   $(this).show()
