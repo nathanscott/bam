@@ -66,6 +66,19 @@ $.fn.set_styles: (style) ->
   else if style == 'heart'
     $(this).css({'color': '#000', 'background-color': '#fff'})
 
+$.fn.randomizeColour: ->
+  randomColor: -> Math.floor Math.random() * 256
+  $(this).css({'background-color': 'rgb(' + randomColor() + ',' + randomColor() + ',' + randomColor() + ')'})
+  if $(this).css('color') == 'rgb(255, 255, 255)'
+    $(this).css({'color': '#000'}) if Math.random() > 0.5
+  else if $(this).css('color') == 'rgb(0, 0, 0)'
+    $(this).css({'color': '#fff'}) if Math.random() > 0.5
+  $(this).data 'timeout', setTimeout((-> $('#bigarsemessage').randomizeColour()), 20)
+
+$.fn.attach_events: (style) ->
+  if style == 'magic'
+    $(this).randomizeColour()
+
 $.fn.bigarsemessage: (text) ->
   text: "Big Arse Message" if text.length == 0
   $(this).children('div').html(text)
@@ -73,10 +86,13 @@ $.fn.bigarsemessage: (text) ->
   $(this).show()
   $(this).typeset()
   $(this).set_styles $(this).attr('class')
+  $(this).attach_events $(this).attr('class')
   # $(this).css({'opacity': 1})
 
 $ ->
-  $('#bigarsemessage').hide().click -> $(this).hide()
+  $('#bigarsemessage').hide().click ->
+    clearTimeout $(this).data('timeout') if $(this).data('timeout')
+    $(this).hide()
   $('form li input[type=submit]').click -> false
 
   $('form li input[type=submit][name=Preview]').click ->
