@@ -6,7 +6,8 @@ $ ->
     $('form:first').submit()
     false
 
-  $('form:first select option.basic').attr('selected', 'selected')
+  if $('form:first select option:selected').length == 0
+    $('form:first select option.basic').attr('selected', 'selected')
 
   $('textarea.message').keyup ->
     if $(this).val().length > MessageLength
