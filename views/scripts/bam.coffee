@@ -2,19 +2,28 @@ MessageLength: 12 * 4
 
 $.fn.typeset: ->
   elem: $(this).find('div')
-  lines: elem.html().split(/\s+/)
-  line_lengths: i.length for i in lines
-  longest_line: Math.max line_lengths...
-  console.log longest_line
-  elem.css {width: '5em'}
-  scale: 21
+  
+  text: elem.html()
+  line_height: elem.html('A').height()
+  elem.html(text)
+  elem.css {'width': '0.5em'}
+  words: elem.html().split(/\s+/).length
+
+  console.log elem.height() + " / " + line_height + " = " + (elem.height() / line_height)
+
+  width: 0.5
+  limit: Math.min(words, 4)
+  while elem.height() / line_height > limit
+    console.log elem.height() + " / " + line_height + " = " + (elem.height() / line_height)
+    elem.css {'width': (width: width + 0.5) + 'em'}
+
 
 $.fn.bigarsemessage: (text) ->
   $(this).children('div').html(text)
   $(this).attr 'class', $('form:first select option:selected').attr('class')
-  $(this).typeset()
-  console.log text
   $(this).show()
+  $(this).typeset()
+  # $(this).css({'opacity': 1})
 
 $ ->
   $('#bigarsemessage').hide().click -> $(this).hide()
