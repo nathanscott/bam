@@ -2,21 +2,43 @@ MessageLength: 12 * 4
 
 $.fn.typeset: ->
   elem: $(this).find('div')
-  
+
+  words: elem.html().split(/\s+/).length
+
   text: elem.html()
   line_height: elem.html('A').height()
   elem.html(text)
+
   elem.css {'width': '0.5em'}
-  words: elem.html().split(/\s+/).length
+
+  container_ratio: $(this).width() / $(this).height()
+  lines: elem.height() / line_height
+  ratios_by_line: {}
+  if !ratios_by_line[lines]
+    ratios_by_line[lines]: {'width': elem.width(), 'height': elem.height(), 'container_ratio': container_ratio, 'ratio': (elem.width() / elem.height()), 'ratio_difference': (container_ratio / (elem.width() / elem.height()))}
 
   console.log elem.height() + " / " + line_height + " = " + (elem.height() / line_height)
 
   width: 0.5
-  limit: Math.min(words, 4)
-  while elem.height() / line_height > limit
+  while elem.height() / line_height > 1
     console.log elem.height() + " / " + line_height + " = " + (elem.height() / line_height)
     elem.css {'width': (width: width + 0.5) + 'em'}
+    lines: elem.height() / line_height
+    if !ratios_by_line[lines]
+      ratios_by_line[lines]: {'width': elem.width(), 'height': elem.height(), 'container_ratio': container_ratio, 'ratio': (elem.width() / elem.height()), 'ratio_difference': (container_ratio / (elem.width() / elem.height()))}
 
+  console.log "done: " + elem.height() + " / " + line_height + " = " + (elem.height() / line_height)
+  console.log ratios_by_line
+
+  closest_ratio_to_one: 1
+  best_entry: null
+  $.each ratios_by_line, (lines, data) ->
+    console.log "on " + lines + ": " + data
+    if Math.abs(data.ratio_difference - 1) < closest_ratio_to_one
+      closest_ratio_to_one: Math.abs(data.ratio_difference - 1)
+      best_entry: lines
+
+  console.log "best: " + closest_ratio_to_one + ", on " + best_entry + " lines"
 
 $.fn.bigarsemessage: (text) ->
   $(this).children('div').html(text)
