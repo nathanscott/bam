@@ -23,13 +23,26 @@ helpers do
     @style = (params['style'] || 'basic').downcase
     @message = params['message'].blank? ? 'Big Arse Message' : params['message']
   end
+  
+  def new_hash( length )
+      chars = ("A".."F").to_a + ("0".."9").to_a
+      hashh = ""
+      1.upto(length) { |i| hashh << chars[rand(chars.size-1)] }
+      hashh
+  end
 end
 
 post '/save' do
-  # save via ajax and return the url string
-  haml :message
+  @hash = new_hash( 10 )
+  File.open('data/'+@hash, 'w') {|f| f.write(params[:type]+"\n"+params[:message]) }
+  layout false
+  @hash
 end
 
-get '/help' do
-  # redirect or redirect to another
+get %r{(.*)$} do |hashh|
+  if File.exists?('data/'+hashh)
+    File.open('data/'+hashh, 'r') { |f| @type = f.gets; @message = f.gets; haml :index }
+  else
+    halt 404
+  end
 end

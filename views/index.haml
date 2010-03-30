@@ -1,4 +1,4 @@
-#bigarsemessage
+#bigarsemessage{ :class => @type }
   %div
 
 %ol#main
@@ -11,18 +11,17 @@
           %label
             Message
           %textarea.message{:name => "message"}
+            =@message
         %li
           %label
             Style
-          %select{ :name => "style", :multiple => "multiple"}
-            %option.basic BASIC
-            %option.magic MAGIC
-            %option.heart HEART
-            %option.jprdy JPRDY
+          %select{ :name => "style", :id => "style", :multiple => "multiple"}
+            - %w[basic magic heart jprdy].each do |type|
+              %option{:class => type, :selected => (@type==type.upcase ? "selected" : nil )}= type.upcase
         %li.buttons
           %input{:type => "submit", :value => "preview", :name => "Preview"}/
           %input{:type => "submit", :value => "save", :name => "Save"}/
           %input{:type => "submit", :value => "?", :name => "Help"}/
   %li
     Click to Copy URL
-    %input#url
+    %input#url{ :readonly => "readonly" }
