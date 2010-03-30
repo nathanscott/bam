@@ -1,5 +1,6 @@
-#bigarsemessage
+#bigarsemessage{ :class => @type }
   %div
+    =@message
 
 %ol#main
   %li
@@ -14,7 +15,7 @@
         %li
           %label
             Style
-          %select{ :name => "style", :multiple => "multiple"}
+          %select{ :name => "style", :id => "style", :multiple => "multiple"}
             %option.basic BASIC
             %option.magic MAGIC
             %option.heart HEART

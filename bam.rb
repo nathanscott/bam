@@ -33,14 +33,16 @@ helpers do
 end
 
 post '/save' do
-  # save via ajax and return the url string
   @hash = new_hash( 10 )
-  # save params[:message] to file called @hash
-  File.open('data/'+@hash, 'w') {|f| f.write(params[:message]) }
+  File.open('data/'+@hash, 'w') {|f| f.write(params[:type]+"\n"+params[:message]) }
   layout false
   @hash
 end
 
-get '/help' do
-  # redirect or redirect to another
+get %r{(.*)$} do |hashh|
+  if File.exists?('data/'+hashh)
+    File.open('data/'+hashh, 'r') { |f| @type = f.gets; @message = f.gets; haml :index }
+  else
+    halt 404
+  end
 end
