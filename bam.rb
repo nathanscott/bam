@@ -41,6 +41,11 @@ get %r{(.*)$} do |unsafe_hash|
   if hashh.blank? || !File.exists?(File.join('data', hashh))
     halt 404
   else
-    File.open(File.join('data', hashh), 'r') { |f| @type = f.gets; @message = f.gets; haml :index }
+    File.open(File.join('data', hashh), 'r') { |f| @type = f.gets.chomp; @message = f.gets; haml :index }
   end
+end
+
+not_found do
+  haml ":textile
+  h1. That big arse message \ncouldn't be found"
 end
