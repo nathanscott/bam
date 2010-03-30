@@ -39,7 +39,8 @@ post '/save' do
   @hash
 end
 
-get %r{(.*)$} do |hashh|
+get %r{(.*)$} do |unsafe_hash|
+  hashh = unsafe_hash.gsub(/[^a-z0-9]/, '')
   if File.exists?('data/'+hashh)
     File.open('data/'+hashh, 'r') { |f| @type = f.gets; @message = f.gets; haml :index }
   else
