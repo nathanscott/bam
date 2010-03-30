@@ -24,24 +24,24 @@ helpers do
     @message = params['message'].blank? ? 'Big Arse Message' : params['message']
   end
   
-  def new_hash( length )
+  def new_key( length )
     1.upto(length).to_a.map { rand(16).to_s(16) }.join
   end
 end
 
 post '/save' do
-  @hash = new_hash(7) until !@hash.blank? && !File.exists?(File.join('data', @hash))
-  File.open(File.join('data', @hash), 'w') {|f| f.write(params[:type]+"\n"+params[:message]) }
+  @key = new_key(7) until !@key.blank? && !File.exists?(File.join('data', @key))
+  File.open(File.join('data', @key), 'w') {|f| f.write(params[:type]+"\n"+params[:message]) }
   layout false
-  @hash
+  @key
 end
 
-get %r{(.*)$} do |unsafe_hash|
-  hashh = unsafe_hash.downcase.gsub(/[^a-z0-9]/, '')
-  if hashh.blank? || !File.exists?(File.join('data', hashh))
+get %r{(.*)$} do |unsafe_key|
+  key = unsafe_key.downcase.gsub(/[^a-z0-9]/, '')
+  if key.blank? || !File.exists?(File.join('data', key))
     halt 404
   else
-    @type, @message = File.read(File.join('data', hashh)).strip.split("\n")
+    @type, @message = File.read(File.join('data', key)).strip.split("\n")
     haml :index
   end
 end
