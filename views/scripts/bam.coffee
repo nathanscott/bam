@@ -106,6 +106,8 @@ $ ->
         $("input#url")[0].value: 'http://bigarsemessage.com/'+save_hash
     });
 
+  if $('form:first select option:selected').length>0 && $('form:first textarea.message').value != ""
+    $('form li input[type=submit][name=Preview]').click()
 
   if $('form:first select option:selected').length == 0
     $('form:first select option.basic').attr('selected', 'selected')
