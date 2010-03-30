@@ -31,16 +31,16 @@ end
 
 post '/save' do
   @hash = new_hash(7) until !@hash.blank? && !File.exists?(File.join('data', @hash))
-  File.open('data/'+@hash, 'w') {|f| f.write(params[:type]+"\n"+params[:message]) }
+  File.open(File.join('data', @hash), 'w') {|f| f.write(params[:type]+"\n"+params[:message]) }
   layout false
   @hash
 end
 
 get %r{(.*)$} do |unsafe_hash|
   hashh = unsafe_hash.gsub(/[^a-z0-9]/, '')
-  if hashh.blank? || !File.exists?('data/'+hashh)
+  if hashh.blank? || !File.exists?(File.join('data', hashh))
     halt 404
   else
-    File.open('data/'+hashh, 'r') { |f| @type = f.gets; @message = f.gets; haml :index }
+    File.open(File.join('data', hashh), 'r') { |f| @type = f.gets; @message = f.gets; haml :index }
   end
 end
