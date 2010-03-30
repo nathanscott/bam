@@ -46,3 +46,8 @@ get %r{(.*)$} do |hashh|
     halt 404
   end
 end
+
+not_found do
+  haml ":textile
+  h1. That big arse message \ncouldn't be found"
+end
