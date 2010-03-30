@@ -33,7 +33,7 @@ helpers do
 end
 
 post '/save' do
-  @hash = new_hash( 10 )
+  @hash = new_hash( 7 )
   File.open('data/'+@hash, 'w') {|f| f.write(params[:type]+"\n"+params[:message]) }
   layout false
   @hash
