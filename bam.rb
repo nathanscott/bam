@@ -38,9 +38,9 @@ end
 
 get %r{(.*)$} do |unsafe_hash|
   hashh = unsafe_hash.gsub(/[^a-z0-9]/, '')
-  if File.exists?('data/'+hashh)
-    File.open('data/'+hashh, 'r') { |f| @type = f.gets; @message = f.gets; haml :index }
-  else
+  if hashh.blank? || !File.exists?('data/'+hashh)
     halt 404
+  else
+    File.open('data/'+hashh, 'r') { |f| @type = f.gets; @message = f.gets; haml :index }
   end
 end
