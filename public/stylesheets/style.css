@@ -124,3 +124,7 @@ form {
     form input[type="submit"]:last-child {
       margin: 0;
     }
+input[type="text"] {
+  margin-left: 2em;
+  width: 18em;
+}

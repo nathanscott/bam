@@ -102,11 +102,10 @@ $ ->
       url: "/save",
       data: "message="+$("textarea.message")[0].value+"&type="+$("select#style")[0].value,
       success: (save_hash) ->
-        console.log save_hash
-        $("input#url")[0].value: 'http://bigarsemessage.com/'+save_hash
+        $("input#url")[0].value: 'bigarsemessage.com/'+save_hash
     });
 
-  if $('form:first select option:selected').length>0 && $('form:first textarea')[0].value != ""
+  if $('#bigarsemessage').class!='' && $('form:first textarea')[0].value != ""
     $('form li input[type=submit][name=Preview]').click()
 
   if $('form:first select option:selected').length == 0
