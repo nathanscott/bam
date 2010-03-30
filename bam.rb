@@ -3,7 +3,7 @@ require 'sinatra'
 require 'haml'
 require 'coffee-script'
 
-class String
+class Object
   def blank?
     nil? || empty?
   end
