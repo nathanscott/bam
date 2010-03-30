@@ -96,6 +96,16 @@ $ ->
 
   $('form li input[type=submit][name=Preview]').click ->
     $('#bigarsemessage').bigarsemessage($('textarea.message').val())
+  $('form li input[type=submit][name=Save]').click ->
+    $.ajax({
+      type: "POST",
+      url: "/save",
+      data: "message="+$("textarea.message")[0].value,
+      success: (save_hash) ->
+        console.log save_hash
+        $("input#url")[0].value: 'http://bigarsemessage.com/'+save_hash
+    });
+
 
   if $('form:first select option:selected').length == 0
     $('form:first select option.basic').attr('selected', 'selected')
@@ -104,6 +114,9 @@ $ ->
     if $(this).val().length > MessageLength
       $(this).val($(this).val().substring(0,MessageLength))
   
-  preload: for font in ['/fonts/AmericanTypewriter.ttf', '/fonts/Korinna-Bold.ttf']
+  $("input#url").click ->
+    $(this).select()
+  
+  for font in ['/fonts/AmericanTypewriter.ttf', '/fonts/Korinna-Bold.ttf']
     new_font: new Image()
     new_font.src: font

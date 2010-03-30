@@ -23,11 +23,22 @@ helpers do
     @style = (params['style'] || 'basic').downcase
     @message = params['message'].blank? ? 'Big Arse Message' : params['message']
   end
+  
+  def new_hash( length )
+      chars = ("A".."F").to_a + ("0".."9").to_a
+      hashh = ""
+      1.upto(length) { |i| hashh << chars[rand(chars.size-1)] }
+      hashh
+  end
 end
 
 post '/save' do
   # save via ajax and return the url string
-  haml :message
+  @hash = new_hash( 10 )
+  # save params[:message] to file called @hash
+  File.open('data/'+@hash, 'w') {|f| f.write(params[:message]) }
+  layout false
+  @hash
 end
 
 get '/help' do
