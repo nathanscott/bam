@@ -25,10 +25,7 @@ helpers do
   end
   
   def new_hash( length )
-      chars = ("a".."f").to_a + ("0".."9").to_a
-      hashh = ""
-      1.upto(length) { |i| hashh << chars[rand(chars.size-1)] }
-      hashh
+    1.upto(length).to_a.map { rand(16).to_s(16) }.join
   end
 end
 
