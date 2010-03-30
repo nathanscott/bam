@@ -36,8 +36,8 @@ post '/save' do
   @key
 end
 
-get %r{(.*)$} do |unsafe_key|
-  key = unsafe_key.downcase.gsub(/[^a-z0-9]/, '')
+get %r{([a-zA-Z0-9]*)$} do |key|
+  key.downcase!
   if key.blank? || !File.exists?(File.join('data', key))
     halt 404
   else
