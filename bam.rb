@@ -37,11 +37,11 @@ post '/save' do
 end
 
 get %r{([a-zA-Z0-9]*)$} do |key|
-  key.downcase!
-  if key.blank? || !File.exists?(File.join('data', key))
+  filename = File.join('data', key.downcase)
+  if key.blank? || !File.exists?(filename)
     halt 404
   else
-    @type, @message = File.read(File.join('data', key)).strip.split("\n")
+    @type, @message = File.read(filename).strip.split("\n")
     haml :index
   end
 end
