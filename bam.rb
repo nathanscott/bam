@@ -43,7 +43,7 @@ get %r{([a-zA-Z0-9]*)$} do |key|
   else
     @type, @message = File.read(filename).strip.split("\n")
     puts "rendering #{key} (#{@type}, '#{@message}')"
-    haml :index
+    haml :message
   end
 end
 

@@ -16,4 +16,32 @@
       #header
         %h1="Big Arse Message"
       #content
+        #bigarsemessage{ :class => @type }
+          %div
+        
         = yield
+        
+        %ol#main
+          %li
+            Welcome to BigArseMessage.com
+          %li
+            %form{:method => "post", :action => "/preview"}
+              %ol.form
+                %li
+                  %label
+                    Message
+                  %textarea.message{:name => "message"}
+                    =@message
+                %li
+                  %label
+                    Style
+                  %select{ :name => "style", :id => "style", :multiple => "multiple"}
+                    - %w[basic magic heart jprdy].each do |type|
+                      %option{:class => type, :selected => (@type==type.upcase ? "selected" : nil )}= type.upcase
+                %li.buttons
+                  %input{:type => "submit", :value => "preview", :name => "Preview"}/
+                  %input{:type => "submit", :value => "save", :name => "Save"}/
+                  %input{:type => "submit", :value => "?", :name => "Help"}/
+          %li
+            Click to Copy URL
+            %input#url{ :readonly => "readonly" }
