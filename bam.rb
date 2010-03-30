@@ -30,7 +30,7 @@ helpers do
 end
 
 post '/save' do
-  @hash = new_hash( 7 )
+  @hash = new_hash(7) until !@hash.blank? && !File.exists?(File.join('data', @hash))
   File.open('data/'+@hash, 'w') {|f| f.write(params[:type]+"\n"+params[:message]) }
   layout false
   @hash
