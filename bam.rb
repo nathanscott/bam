@@ -3,7 +3,7 @@ require 'sinatra'
 require 'haml'
 require 'coffee-script'
 
-class String
+class Object
   def blank?
     nil? || empty?
   end
@@ -24,26 +24,26 @@ helpers do
     @message = params['message'].blank? ? 'Big Arse Message' : params['message']
   end
   
-  def new_hash( length )
-      chars = ("A".."F").to_a + ("0".."9").to_a
-      hashh = ""
-      1.upto(length) { |i| hashh << chars[rand(chars.size-1)] }
-      hashh
+  def new_key( length )
+    1.upto(length).to_a.map { rand(16).to_s(16) }.join
   end
 end
 
 post '/save' do
-  @hash = new_hash( 10 )
-  File.open('data/'+@hash, 'w') {|f| f.write(params[:type]+"\n"+params[:message]) }
+  @key = new_key(7) until !@key.blank? && !File.exists?(File.join('data', @key))
+  File.open(File.join('data', @key), 'w') {|f| f.write(params[:type]+"\n"+params[:message]) }
   layout false
-  @hash
+  @key
 end
 
-get %r{(.*)$} do |hashh|
-  if File.exists?('data/'+hashh)
-    File.open('data/'+hashh, 'r') { |f| @type = f.gets.chomp; @message = f.gets; haml :index }
-  else
+get %r{([a-zA-Z0-9]*)$} do |key|
+  filename = File.join('data', key.downcase)
+  if key.blank? || !File.exists?(filename)
     halt 404
+  else
+    @type, @message = File.read(filename).strip.split("\n")
+    puts "rendering #{key} (#{@type}, '#{@message}')"
+    haml :index
   end
 end
 
