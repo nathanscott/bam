@@ -41,7 +41,7 @@ end
 
 get %r{(.*)$} do |hashh|
   if File.exists?('data/'+hashh)
-    File.open('data/'+hashh, 'r') { |f| @type = f.gets; @message = f.gets; haml :index }
+    File.open('data/'+hashh, 'r') { |f| @type = f.gets.chomp; @message = f.gets; haml :index }
   else
     halt 404
   end
