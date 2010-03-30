@@ -37,7 +37,7 @@ post '/save' do
 end
 
 get %r{(.*)$} do |unsafe_hash|
-  hashh = unsafe_hash.gsub(/[^a-z0-9]/, '')
+  hashh = unsafe_hash.downcase.gsub(/[^a-z0-9]/, '')
   if hashh.blank? || !File.exists?(File.join('data', hashh))
     halt 404
   else
