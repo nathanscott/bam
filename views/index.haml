@@ -1,6 +1,5 @@
 #bigarsemessage{ :class => @type }
   %div
-    =@message
 
 %ol#main
   %li
@@ -12,14 +11,13 @@
           %label
             Message
           %textarea.message{:name => "message"}
+            =@message
         %li
           %label
             Style
           %select{ :name => "style", :id => "style", :multiple => "multiple"}
-            %option.basic BASIC
-            %option.magic MAGIC
-            %option.heart HEART
-            %option.jprdy JPRDY
+            - %w[basic magic heart jprdy].each do |type|
+              %option{:class => type, :selected => (@type.downcase==type ? "selected" : nil )}= type.upcase
         %li.buttons
           %input{:type => "submit", :value => "preview", :name => "Preview"}/
           %input{:type => "submit", :value => "save", :name => "Save"}/
