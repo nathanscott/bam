@@ -41,7 +41,8 @@ get %r{(.*)$} do |unsafe_hash|
   if hashh.blank? || !File.exists?(File.join('data', hashh))
     halt 404
   else
-    File.open(File.join('data', hashh), 'r') { |f| @type = f.gets.chomp; @message = f.gets; haml :index }
+    @type, @message = File.read(File.join('data', hashh)).strip.split("\n")
+    haml :index
   end
 end
 
