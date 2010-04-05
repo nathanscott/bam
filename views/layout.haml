@@ -11,6 +11,24 @@
     %link{ :rel => "Shortcut Icon", :href => "/favicon.ico"}
     %script{:src => "/scripts/jquery.js", :type => "text/javascript"}
     %script{:src => "/scripts/bam.js", :type => "text/javascript"}
+    :javascript
+      if (navigator.userAgent.toLowerCase().indexOf('iphone')!=-1) {
+        document.write(unescape("%3Cscript src='/scripts/cufon-yui.js' type='text/javascript'%3E%3C/script%3E"));
+      }
+    :javascript
+      if (navigator.userAgent.toLowerCase().indexOf('iphone')!=-1) {
+        document.write(unescape("%3Cscript src='/scripts/AmericanTypewriter_400.font.js' type='text/javascript'%3E%3C/script%3E"));
+        document.write(unescape("%3Cscript src='/scripts/KorinnaBold_500.font.js' type='text/javascript'%3E%3C/script%3E"));
+        document.write(unescape("%3Cscript src='/scripts/FuturaCondensedExtraBoldOblique_italic_500.font.js' type='text/javascript'%3E%3C/script%3E"));
+      }
+    :javascript
+      if (navigator.userAgent.toLowerCase().indexOf('iphone')!=-1) {
+        Cufon.replace('div#bigarsemessage.heart div', { fontFamily: 'AmericanTypewriter' });
+        Cufon.replace('div#bigarsemessage.basic div', { fontFamily: 'FuturaCondensedExtraBoldOblique' });
+        Cufon.replace('div#bigarsemessage.magic div', { fontFamily: 'FuturaCondensedExtraBoldOblique' });
+        Cufon.replace('div#bigarsemessage.jprdy div', { fontFamily: 'KorinnaBold' });
+      }
+
   %body
     #container
       #header
