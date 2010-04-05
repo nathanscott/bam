@@ -87,6 +87,8 @@ $.fn.bigarsemessage: (text) ->
   $(this).typeset()
   $(this).set_styles $(this).attr('class')
   $(this).attach_events $(this).attr('class')
+  console.log "Got Cufon - "+$(this).attr('class') if Cufon?
+  Cufon.refresh('div#bigarsemessage.'+$(this).attr('class')+' div') if Cufon?
 
 $ ->
   $('#bigarsemessage').hide().click ->
