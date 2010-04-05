@@ -71,8 +71,10 @@ $.fn.randomizeColour: ->
   $(this).css({'background-color': 'rgb(' + randomColor() + ',' + randomColor() + ',' + randomColor() + ')'})
   if $(this).css('color') == 'rgb(255, 255, 255)'
     $(this).css({'color': '#000'}) if Math.random() > 0.5
+    Cufon.replace('div#bigarsemessage.magic div', { fontFamily: 'FuturaCondensedExtraBoldOblique', fontStretch: 'condensed', color: '#000' }) if Cufon?
   else if $(this).css('color') == 'rgb(0, 0, 0)'
     $(this).css({'color': '#fff'}) if Math.random() > 0.5
+    Cufon.replace('div#bigarsemessage.magic div', { fontFamily: 'FuturaCondensedExtraBoldOblique', fontStretch: 'condensed', color: '#fff' }) if Cufon?
   $(this).data 'timeout', setTimeout((-> $('#bigarsemessage').randomizeColour()), 20)
 
 $.fn.attach_events: (style) ->
@@ -87,7 +89,7 @@ $.fn.bigarsemessage: (text) ->
   $(this).typeset()
   $(this).set_styles $(this).attr('class')
   $(this).attach_events $(this).attr('class')
-  console.log "Got Cufon - "+$(this).attr('class') if Cufon?
+  # console.log "Got Cufon - "+$(this).attr('class') if Cufon?
   Cufon.refresh('div#bigarsemessage.'+$(this).attr('class')+' div') if Cufon?
 
 $ ->
