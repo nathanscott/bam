@@ -143,7 +143,7 @@ ul.type_select {
 			text-decoration: none;
 		}
 			ul.type_select li a:hover, ul.type_select li a.selected {
-	      color: #000;
+	      color: #00f;
 	      background-color: #fff;
 			} 
 input[type="text"] {
