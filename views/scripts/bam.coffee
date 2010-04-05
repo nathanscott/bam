@@ -82,7 +82,7 @@ $.fn.attach_events: (style) ->
 $.fn.bigarsemessage: (text) ->
   text: "Big Arse Message" if text.length == 0
   $(this).children('div').html(text)
-  $(this).attr 'class', $('form:first select option:selected').attr('class')
+  $(this).attr 'class', $('input#style')[0].value
   $(this).show()
   $(this).typeset()
   $(this).set_styles $(this).attr('class')
@@ -95,6 +95,11 @@ $ ->
     clearTimeout $(this).data('timeout') if $(this).data('timeout')
     $(this).hide()
   $('form li input[type=submit]').click -> false
+  
+  $('.type_select a').click ->
+    $('.type_select a').removeClass('selected')
+    $('input#style')[0].value=this.className
+    $(this).addClass("selected")
 
   $('form li input[type=submit][name=Preview]').click ->
     $('#bigarsemessage').bigarsemessage($('textarea.message').val())
@@ -102,13 +107,13 @@ $ ->
     $.ajax({
       type: "POST",
       url: "/save",
-      data: "message="+$("textarea.message")[0].value+"&type="+$("select#style")[0].value,
+      data: "message="+$("textarea.message")[0].value+"&type="+$("input#style")[0].value,
       success: (save_hash) ->
         $("input#url")[0].value: 'bigarsemessage.com/'+save_hash
     });
 
-  if $('form:first select option:selected').length == 0
-    $('form:first select option.basic').attr('selected', 'selected')
+  if $('ul.type_select a.selected').length == 0
+    $('ul.type_select a.basic').click()
 
   $('textarea.message').keyup ->
     if $(this).val().length > MessageLength

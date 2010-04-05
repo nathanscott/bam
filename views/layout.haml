@@ -53,9 +53,12 @@
                 %li
                   %label
                     Style
-                  %select{ :name => "style", :id => "style", :multiple => "multiple"}
+                  %input{ :name => "style", :id => "style", :type => "hidden" }
+                  %ul.type_select
                     - %w[basic magic heart jprdy].each do |type|
-                      %option{:class => type, :selected => (@type==type.upcase ? "selected" : nil )}= type.upcase
+                      %li
+                        %a{ :href => "#", :class => type+(@type==type.upcase ? " selected" : "" ), :id => "type_#{type}" }= type.upcase
+
                 %li.buttons
                   %input{:type => "submit", :value => "preview", :name => "Preview"}/
                   %input{:type => "submit", :value => "save", :name => "Save"}/

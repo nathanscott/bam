@@ -121,7 +121,7 @@ form {
   }
     form input[type="submit"]:hover {
       color: #00f;
-      background-color: white;
+      background-color: #fff;
     }
     form input[type="submit"]:before {
       content: ">>";
@@ -129,6 +129,23 @@ form {
     form input[type="submit"]:last-child {
       margin: 0;
     }
+ul.type_select {
+	margin: 0;
+	padding: 0;
+}
+	ul.type_select li {
+		margin: 0;
+		padding: 0;
+	}
+		ul.type_select li a { 
+			display: block;
+			color: #fff;
+			text-decoration: none;
+		}
+			ul.type_select li a:hover, ul.type_select li a.selected {
+	      color: #000;
+	      background-color: #fff;
+			} 
 input[type="text"] {
   margin-left: 2em;
   width: 18em;
