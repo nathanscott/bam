@@ -100,6 +100,7 @@ $ ->
     $('.type_select a').removeClass('selected')
     $('input#style')[0].value=this.className
     $(this).addClass("selected")
+    return false
 
   $('form li input[type=submit][name=Preview]').click ->
     $('#bigarsemessage').bigarsemessage($('textarea.message').val())
