@@ -40,9 +40,6 @@ html {
   #bigarsemessage.basic,
   #bigarsemessage.magic {
     font-family: 'FuturaCondensedExtraBoldOblique';
-    font-weight: bold;
-    font-style: italic;
-		font-stretch: condensed;
   }
 
   #bigarsemessage.heart {
