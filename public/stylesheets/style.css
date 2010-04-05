@@ -8,6 +8,11 @@ html {
 }
 
 @font-face {
+  font-family: 'FuturaCondensedExtraBoldOblique';
+  src: url('/fonts/FuturaCondensedExtraBoldOblique.ttf');
+}
+
+@font-face {
   font-family: 'AmericanTypewriter';
   src: url('/fonts/AmericanTypewriter.ttf');
 }
@@ -35,7 +40,7 @@ html {
 
   #bigarsemessage.basic,
   #bigarsemessage.magic {
-    font-family: 'Futura';
+    font-family: 'FuturaCondensedExtraBoldOblique';
     font-weight: bold;
     font-style: italic;
   }
